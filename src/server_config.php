@@ -1,5 +1,11 @@
 <?php
-return [
+
+if (file_exists($custom_config_file = getcwd() . '/php-server.ini'))
+{
+	$custom_config = parse_ini_file($custom_config_file, true);
+}
+
+$default_config = [
    'php'             => PHP_BINARY,
    'host'            => 'localhost',
    'port'            => '8080',
@@ -13,3 +19,5 @@ return [
 	   'max_execution_time'     => 360,
    ],
 ];
+
+return isset($custom_config) ? array_merge($default_config, $custom_config) : $default_config;
