@@ -51,7 +51,7 @@ if ((! is_file(DIR) && ! is_dir(DIR) || RDIR === '') && file_exists($index = "{$
 }
 
 // If autoindex is disabled the filepaths list will not be showed
-if ($config['autoindex'] === false)
+if ((bool)$config['autoindex'] === false)
 {
 	return true;
 }
