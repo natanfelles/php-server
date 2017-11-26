@@ -3,7 +3,7 @@ return [
    'php'             => PHP_BINARY,
    'host'            => 'localhost',
    'port'            => '8080',
-   'root'            => __DIR__ . '/public',
+   'root'            => getcwd(),
    'autoindex'       => true,
    'index'           => 'index.php',
    'error_reporting' => E_ALL,
