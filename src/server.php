@@ -1,7 +1,7 @@
 <?php
 /**
  * PHP Server
- * 
+ *
  * Run the PHP Built-in web server
  *
  * @author Natan Felles <natanfelles@gmail.com>

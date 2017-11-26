@@ -1,7 +1,7 @@
 <?php
 /**
  * PHP Server
- * 
+ *
  * You probably will not have to change much here
  *
  * @author Natan Felles <natanfelles@gmail.com>
@@ -146,7 +146,7 @@ $title = 'Index of ' . (empty(RDIR) ? '/' : RDIR);
 		}
 		tr:nth-child(odd) {
 			background: #fff
-		}		
+		}
 		tr:hover {
 			background: #f5f5f5;
 		}
@@ -208,7 +208,6 @@ $title = 'Index of ' . (empty(RDIR) ? '/' : RDIR);
 			</tr>
 <?php endforeach ?>
 		</tbody>
-	</table>	
+	</table>
 </body>
 </html>
-	
