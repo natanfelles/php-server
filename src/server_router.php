@@ -20,7 +20,7 @@ foreach ($config['ini'] as $key => $value)
 	ini_set($key, $value);
 }
 
-if (isset($_GET['phpinfo']) && $_GET['phpinfo'] === 'show')
+if (isset($_GET['php-server']) && $_GET['php-server'] === 'phpinfo')
 {
 	phpinfo();
 	return true;
@@ -174,7 +174,7 @@ $title = 'Index of ' . (empty(RDIR) ? '/' : RDIR);
 </head>
 <body>
 	<h1><?= $title ?></h1>
-	<p>PHP <?= phpversion() ?> Built-in web server - <a href="/?phpinfo=show">info</a> <span class="date"><?= date('r') ?></span></p>
+	<p>PHP <?= phpversion() ?> Built-in web server - <a href="/?php-server=phpinfo">info</a> <span class="date"><?= date('r') ?></span></p>
 <?php if(! empty(RDIR)): ?>
 	<p><a href="..">Parent dir</a></p>
 <?php endif ?>
