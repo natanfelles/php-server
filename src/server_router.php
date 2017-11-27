@@ -20,6 +20,11 @@ foreach ($config['ini'] as $key => $value)
 	ini_set($key, $value);
 }
 
+foreach ($config['server'] as $key => $value)
+{
+	$_SERVER[$key] = $value;
+}
+
 if (isset($_GET['php-server']) && $_GET['php-server'] === 'phpinfo')
 {
 	phpinfo();

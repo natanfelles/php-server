@@ -51,9 +51,14 @@ error_reporting = E_ALL;
 display_errors = 1;
 display_startup_errors = 1;
 max_execution_time = 360;
+
+[server]
+ENVIRONMENT = development;
 ```
 
 ### Explanation
+
+#### General Vars
 
 | Key | Default Value| Description |
 | --------------- | --- | --- |
@@ -65,7 +70,12 @@ max_execution_time = 360;
 | index | index.html index.php | The names of the index files separated by spaces. |
 | error_reporting | [E_ALL](http://php.net/manual/en/errorfunc.constants.php#errorfunc.constants.errorlevels.e-all) | Sets the [level of errors](http://php.net/manual/en/function.error-reporting.php) that will be reported. |
 
-> In the **ini** section you can set custom [php.ini directives](http://php.net/manual/en/ini.list.php)
+#### Sections
+
+| Section | Description |
+| --- | --- |
+| ini |  Used to set custom [php.ini directives](http://php.net/manual/en/ini.list.php). |
+| server | Used to set custom [Server and execution environment information](http://php.net/manual/en/reserved.variables.server.php). |
 
 Knowing this, just create (if necessary) a php-server.ini file, run the server and you're done.
 
