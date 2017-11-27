@@ -1,0 +1,30 @@
+{
+    "name": "natanfelles/php-server",
+    "description": "Fine tuning on the PHP Built-in web server.",
+    "type": "library",
+    "keywords": [
+        "server",
+        "php-server"
+    ],
+    "homepage": "https://github.com/natanfelles/php-server",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Natan Felles",
+            "email": "natanfelles@gmail.com",
+            "homepage": "https://natanfelles.github.io",
+            "role": "lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/natanfelles/php-server/issues",
+        "wiki": "https://github.com/natanfelles/php-server/wiki",
+        "source": "https://github.com/natanfelles/php-server"
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "bin": [
+        "bin/php-server"
+    ]
+}
