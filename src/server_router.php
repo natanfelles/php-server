@@ -199,7 +199,7 @@ $title = 'Index of ' . (empty(RDIR) ? '/' : RDIR);
 <?php foreach($filepaths as $file): ?>
 			<tr>
 				<td><?= $file['type'] ?></td>
-				<td><a href="<?= RDIR . str_replace(DIR, '', $file['realPath'])  ?>"><?= $file['filename'] ?></a></td>
+				<td><a href="<?= RDIR . '/' . $file['filename']  ?>"><?= $file['filename'] ?></a></td>
 				<td><?= $file['isDir'] ? count(glob($file['realPath'] . '/*')) . ' itens' : size_conversion($file['size']) ?></td>
 				<td><?= $file['owner'] ?></td>
 				<td><?= $file['group'] ?></td>
