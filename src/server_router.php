@@ -23,24 +23,25 @@ foreach ($config['ini'] as $key => $value)
 if (isset($_GET['php-server']) && $_GET['php-server'] === 'phpinfo')
 {
 	phpinfo();
+
 	return true;
-}
-
-/**
- * Absolute directory path
- */
-define('DIR', preg_replace('/\/$/', '', "{$config['root']}{$_SERVER['REQUEST_URI']}"));
-
-// If is not a dir get the file content
-if (! is_dir(DIR))
-{
-	return false;
 }
 
 /**
  * Relative directory path
  */
-define('RDIR', preg_replace('/\/$/', '', $_SERVER['REQUEST_URI']));
+define('RDIR', preg_replace('/\/$/', '', parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH)));
+
+/**
+ * Absolute directory path
+ */
+define('DIR', $config['root'] . RDIR);
+
+// If is not a dir get the file content
+if (! is_dir(DIR) && is_file(DIR))
+{
+	return false;
+}
 
 // All the child pathnames
 $pathnames = glob(DIR . '/*');
@@ -49,6 +50,7 @@ $pathnames = glob(DIR . '/*');
 $indexes = explode(' ', trim($config['index']));
 
 foreach ($indexes as $index) {
+	// Check if has an index inside the current dir
 	if (in_array($index = DIR . '/' . $index, $pathnames))
 	{
 		if (is_file($index))
@@ -58,6 +60,26 @@ foreach ($indexes as $index) {
 			return true;
 		}
 	}
+}
+
+// Rewrite - Check if has an index in the document root
+foreach ($indexes as $index) {
+	if (is_file($index = $config['root'] . '/' . $index))
+	{
+		require_once $index;
+
+		return true;
+	}
+}
+
+// If has not any index and the called file or dir does not exist
+// means that we need a Error 404
+if (! file_exists(DIR))
+{
+	http_response_code(404);
+	echo 'Error 404';
+
+	return true;
 }
 
 // If autoindex is disabled the paths list will not be showed
