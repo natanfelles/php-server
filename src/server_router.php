@@ -42,27 +42,30 @@ if (! is_dir(DIR))
  */
 define('RDIR', preg_replace('/\/$/', '', $_SERVER['REQUEST_URI']));
 
+// All the child pathnames
+$pathnames = glob(DIR . '/*');
+
 // Run the index file
-if ((! is_file(DIR) && ! is_dir(DIR) || RDIR === '') && file_exists($index = "{$config['root']}/{$config['index']}"))
+if (in_array($index = DIR . "/{$config['index']}", $pathnames))
 {
 	require_once $index;
 
 	return true;
 }
 
-// If autoindex is disabled the filepaths list will not be showed
+// If autoindex is disabled the paths list will not be showed
 if ((bool)$config['autoindex'] === false)
 {
 	return true;
 }
 
-// All child filepaths
-$filepaths = [];
+// All child paths
+$paths = [];
 
-foreach (glob(DIR . '/*') as $filename)
+foreach ($pathnames as $pathname)
 {
-	$file        = new SplFileInfo($filename);
-	$filepaths[] = [
+	$file        = new SplFileInfo($pathname);
+	$paths[] = [
 		'type'     => $file->getType(),
 		'realPath' => $file->getRealPath(),
 		'filename' => $file->getFilename(),
@@ -74,7 +77,7 @@ foreach (glob(DIR . '/*') as $filename)
 		'mTime'    => $file->getMTime(),
 	];
 }
-sort($filepaths);
+sort($paths);
 
 /**
  * Convert a number to computer size
@@ -191,20 +194,20 @@ $title = 'Index of ' . (empty(RDIR) ? '/' : RDIR);
 			</tr>
 		</thead>
 		<tbody>
-<?php if(empty($filepaths)): ?>
+<?php if(empty($paths)): ?>
 			<tr>
 				<td colspan="7">This directory is empty.</td>
 			</tr>
 <?php endif ?>
-<?php foreach($filepaths as $file): ?>
+<?php foreach($paths as $path): ?>
 			<tr>
-				<td><?= $file['type'] ?></td>
-				<td><a href="<?= RDIR . '/' . $file['filename']  ?>"><?= $file['filename'] ?></a></td>
-				<td><?= $file['isDir'] ? count(glob($file['realPath'] . '/*')) . ' itens' : size_conversion($file['size']) ?></td>
-				<td><?= $file['owner'] ?></td>
-				<td><?= $file['group'] ?></td>
-				<td><?= substr(sprintf('%o', $file['perms']), -4) ?></td>
-				<td><?= date('Y-m-d H:i:s', $file['mTime']) ?></td>
+				<td><?= $path['type'] ?></td>
+				<td><a href="<?= RDIR . '/' . $path['filename']  ?>"><?= $path['filename'] ?></a></td>
+				<td><?= $path['isDir'] ? count(glob($path['realPath'] . '/*')) . ' itens' : size_conversion($path['size']) ?></td>
+				<td><?= $path['owner'] ?></td>
+				<td><?= $path['group'] ?></td>
+				<td><?= substr(sprintf('%o', $path['perms']), -4) ?></td>
+				<td><?= date('Y-m-d H:i:s', $path['mTime']) ?></td>
 			</tr>
 <?php endforeach ?>
 		</tbody>
