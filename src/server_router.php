@@ -99,16 +99,22 @@ $paths = [];
 foreach ($pathnames as $pathname)
 {
 	$file    = new SplFileInfo($pathname);
+
+	if ($file->isDir())
+	{
+		$fi = new FilesystemIterator($file->getRealPath());
+	}
+
 	$paths[] = [
 		'type'     => $file->getType(),
 		'realPath' => $file->getRealPath(),
 		'filename' => $file->getFilename(),
 		'isDir'    => $file->isDir(),
-		'size'     => $file->getSize(),
+		'size'     => $file->isDir() ? iterator_count($fi) . ' items' : size_conversion($file->getSize()),
 		'owner'    => $file->getOwner(),
 		'group'    => $file->getGroup(),
-		'perms'    => $file->getPerms(),
-		'mTime'    => $file->getMTime(),
+		'perms'    => substr(sprintf('%o', $file->getPerms()), -4),
+		'mTime'    => date('Y-m-d H:i:s', $file->getMTime()),
 	];
 }
 sort($paths);

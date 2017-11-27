@@ -28,11 +28,11 @@
 		<tr>
 			<td><?= $path['type'] ?></td>
 			<td><a href="<?= RDIR . '/' . $path['filename']  ?>"><?= $path['filename'] ?></a></td>
-			<td><?= $path['isDir'] ? count(glob($path['realPath'] . '/*')) . ' itens' : size_conversion($path['size']) ?></td>
+			<td><?= $path['size'] ?></td>
 			<td><?= $path['owner'] ?></td>
 			<td><?= $path['group'] ?></td>
-			<td><?= substr(sprintf('%o', $path['perms']), -4) ?></td>
-			<td><?= date('Y-m-d H:i:s', $path['mTime']) ?></td>
+			<td><?= $path['perms'] ?></td>
+			<td><?= $path['mTime'] ?></td>
 		</tr>
 <?php endforeach ?>
 	</tbody>
