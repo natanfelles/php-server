@@ -63,7 +63,7 @@ max_execution_time = 360;
 | root | [getcwd()](http://php.net/manual/en/function.getcwd.php) | Document root. The location that will be the public root of your website. |
 | autoindex | true | Determines if the server will list directory contents if it does not find an index file. |
 | index | index.html index.php | The names of the index files separated by spaces. |
-| error_reporting | [E_ALL](php.net/manual/en/errorfunc.constants.php#errorfunc.constants.errorlevels.e-all) | Sets the [level of errors](http://php.net/manual/en/function.error-reporting.php) that will be reported. |
+| error_reporting | [E_ALL](http://php.net/manual/en/errorfunc.constants.php#errorfunc.constants.errorlevels.e-all) | Sets the [level of errors](http://php.net/manual/en/function.error-reporting.php) that will be reported. |
 
 > In the **ini** section you can set custom [php.ini directives](http://php.net/manual/en/ini.list.php)
 
