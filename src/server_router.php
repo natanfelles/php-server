@@ -30,7 +30,7 @@ if (isset($_GET['php-server']) && $_GET['php-server'] === 'phpinfo')
 /**
  * Relative directory path
  */
-define('RDIR', preg_replace('/\/$/', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+define('RDIR', preg_replace('/\/$/', '', urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))));
 
 /**
  * Absolute directory path
