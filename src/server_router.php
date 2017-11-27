@@ -43,23 +43,17 @@ if (! is_dir(DIR) && is_file(DIR))
 	return false;
 }
 
-// All the child pathnames
-$pathnames = glob(DIR . '/*');
-
 // Run the index file
 $indexes = explode(' ', trim($config['index']));
 
 foreach ($indexes as $index)
 {
 	// Check if has an index inside the current dir
-	if (in_array($index = DIR . '/' . $index, $pathnames))
+	if (is_file($index = DIR . '/' . $index))
 	{
-		if (is_file($index))
-		{
-			require_once $index;
+		require_once $index;
 
-			return true;
-		}
+		return true;
 	}
 }
 
@@ -93,28 +87,29 @@ if ((bool)$config['autoindex'] === false)
 	return true;
 }
 
+// File System iterator
+$filesystem = iterator_to_array(new FilesystemIterator(DIR));
+
 // All child paths
 $paths = [];
 
-foreach ($pathnames as $pathname)
+foreach ($filesystem as $pathname => $SplFileInfo)
 {
-	$file    = new SplFileInfo($pathname);
-
-	if ($file->isDir())
+	if ($SplFileInfo->isDir())
 	{
-		$fi = new FilesystemIterator($file->getRealPath());
+		$fi = new FilesystemIterator($SplFileInfo->getRealPath());
 	}
 
 	$paths[] = [
-		'type'     => $file->getType(),
-		'realPath' => $file->getRealPath(),
-		'filename' => $file->getFilename(),
-		'isDir'    => $file->isDir(),
-		'size'     => $file->isDir() ? iterator_count($fi) . ' items' : size_conversion($file->getSize()),
-		'owner'    => $file->getOwner(),
-		'group'    => $file->getGroup(),
-		'perms'    => substr(sprintf('%o', $file->getPerms()), -4),
-		'mTime'    => date('Y-m-d H:i:s', $file->getMTime()),
+		'type'     => $SplFileInfo->getType(),
+		'realPath' => $SplFileInfo->getRealPath(),
+		'filename' => $SplFileInfo->getFilename(),
+		'isDir'    => $SplFileInfo->isDir(),
+		'size'     => $SplFileInfo->isDir() ? iterator_count($fi) . ' items' : size_conversion($SplFileInfo->getSize()),
+		'owner'    => $SplFileInfo->getOwner(),
+		'group'    => $SplFileInfo->getGroup(),
+		'perms'    => substr(sprintf('%o', $SplFileInfo->getPerms()), -4),
+		'mTime'    => date('Y-m-d H:i:s', $SplFileInfo->getMTime()),
 	];
 }
 sort($paths);
