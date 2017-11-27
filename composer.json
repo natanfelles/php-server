@@ -4,7 +4,8 @@
     "type": "library",
     "keywords": [
         "server",
-        "php-server"
+        "php-server",
+        "devtools"
     ],
     "homepage": "https://github.com/natanfelles/php-server",
     "license": "MIT",
