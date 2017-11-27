@@ -46,11 +46,18 @@ define('RDIR', preg_replace('/\/$/', '', $_SERVER['REQUEST_URI']));
 $pathnames = glob(DIR . '/*');
 
 // Run the index file
-if (in_array($index = DIR . "/{$config['index']}", $pathnames))
-{
-	require_once $index;
+$indexes = explode(' ', trim($config['index']));
 
-	return true;
+foreach ($indexes as $index) {
+	if (in_array($index = DIR . '/' . $index, $pathnames))
+	{
+		if (is_file($index))
+		{
+			require_once $index;
+
+			return true;
+		}
+	}
 }
 
 // If autoindex is disabled the paths list will not be showed
