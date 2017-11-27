@@ -13,12 +13,16 @@
 			color: #333;
 			background: #f2f2f2;
 		}
-		h1 {
+		h1, h1 a {
 			line-height: 3rem;
 			margin: 0 0 1.5rem;
 			overflow: hidden;
 			text-rendering: optimizeLegibility;
 			color: #793862;
+			text-decoration: none;
+		}
+		h1 a.active {
+			color: #369;
 		}
 		h1::after{
 			display: table;
@@ -75,8 +79,83 @@
 	</style>
 </head>
 <body>
+<?php
+if (strpos($title, 'Index of ') === 0)
+{
+	$dirs = explode('/', $title);
+	unset($dirs[0]);
+
+	$dirs        = array_values($dirs);
+	$breadcrumbs = '';
+	for ($i = 0; $i < count($dirs); $i++)
+	{
+		$dir = '';
+		for ($s = 0; $s <= $i; $s++)
+		{
+			$dir .= '/' . $dirs[$s];
+		}
+		$breadcrumbs .= "<a href=\"{$dir}\" class=\"uri\" data-id=\"{$i}\">"
+					 . ($i === 0 ? '' : '/')
+					 . "{$dirs[$i]}</a>";
+	}
+
+	$title = 'Index of <a href="/" class="uri" data-id="-1">/</a>' . $breadcrumbs;
+}
+?>
 	<h1><?= $title ?></h1>
-	<p>PHP <?= phpversion() ?> Built-in web server - <a href="/?php-server=phpinfo">info</a> <span class="date"><?= date('r') ?></span></p>
+	<p>
+		PHP <?= phpversion() ?> Built-in web server -
+		<a href="/?php-server=phpinfo">info</a> <span class="date"><?= date('r') ?></span>
+	</p>
 	<?php require_once __DIR__ . "/{$page}.php"; ?>
+
+	<script type="text/javascript">
+		function addClass(el, className)
+		{
+			if (el.classList)
+			{
+				el.classList.add(className);
+			}
+			else
+			{
+				el.className += ' ' + className;
+			}
+		}
+
+		function removeClass(el, className)
+		{
+			if (el.classList)
+			{
+				el.classList.remove(className);
+			}
+			else
+			{
+				el.className = el.className.replace(new RegExp('(^|\\b)' +
+							   className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+			}
+		}
+
+		var uris = document.getElementsByClassName('uri');
+
+		for (var i = 0; i < uris.length; i++)
+		{
+			uris[i].addEventListener('mouseover', function (argument) {
+				for (var i = 0; i < uris.length; i++)
+				{
+					if (uris[i].getAttribute('data-id') <= this.getAttribute('data-id'))
+					{
+						addClass(uris[i], 'active');
+					}
+				}
+			}, true);
+
+			uris[i].addEventListener('mouseout', function (argument) {
+				for (var i = 0; i < uris.length; i++)
+				{
+					removeClass(uris[i], 'active');
+				}
+			}, true);
+		}
+	</script>
 </body>
 </html>
