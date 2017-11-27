@@ -186,7 +186,7 @@ $title = 'Index of ' . (empty(RDIR) ? '/' : RDIR);
 	<h1><?= $title ?></h1>
 	<p>PHP <?= phpversion() ?> Built-in web server - <a href="/?php-server=phpinfo">info</a> <span class="date"><?= date('r') ?></span></p>
 <?php if(! empty(RDIR)): ?>
-	<p><a href="..">Parent dir</a></p>
+	<p><a href="<?= substr(RDIR, 0, strrpos(RDIR, DIRECTORY_SEPARATOR)) ?>">Parent dir</a></p>
 <?php endif ?>
 	<table>
 		<thead>
