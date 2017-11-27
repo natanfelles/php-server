@@ -20,4 +20,9 @@ $default_config = [
    ],
 ];
 
+if (isset($custom_config['root']))
+{
+   $custom_config['root'] = realpath($custom_config['root']);
+}
+
 return isset($custom_config) ? array_merge($default_config, $custom_config) : $default_config;
