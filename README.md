@@ -51,6 +51,8 @@ error_reporting = E_ALL;
 display_errors = 1;
 display_startup_errors = 1;
 max_execution_time = 360;
+post_max_size = 200M;
+upload_max_filesize = 200M;
 
 [server]
 ENVIRONMENT = development;

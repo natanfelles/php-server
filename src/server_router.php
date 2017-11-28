@@ -18,18 +18,6 @@ $config = require_once 'server_config.php';
 
 error_reporting($config['error_reporting']);
 
-foreach ($config['ini'] as $key => $value)
-{
-	/**
-	 * @todo The ini_set() only works with PHP_INI_ALL
-	 *       For example: upload_max_filesize can not be set here.
-	 * @see http://php.net/manual/en/function.ini-set.php
-	 * @see http://php.net/manual/en/ini.list.php
-	 * @see http://php.net/manual/en/configuration.changes.modes.php
-	 */
-	ini_set($key, $value);
-}
-
 foreach ($config['server'] as $key => $value)
 {
 	$_SERVER[$key] = $value;

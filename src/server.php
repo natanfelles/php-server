@@ -14,6 +14,12 @@
  */
 $config = require_once 'server_config.php';
 
+$ini = '';
+foreach ($config['ini'] as $key => $value)
+{
+	$ini .= " -d {$key}={$value}";
+}
+
 $options = getopt(null, ['php:', 'host:', 'port:', 'root:']);
 
 $php    = $options['php'] ?? $config['php'];
@@ -27,4 +33,4 @@ echo "PHP: {$php}\n";
 echo "Web Address: http://{$host}:{$port}\n";
 echo "Document Root: {$root}\n";
 
-passthru("{$php} -S {$host}:{$port} -t {$root} {$router}");
+passthru("{$php}{$ini} -S {$host}:{$port} -t {$root} {$router}");
