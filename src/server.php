@@ -28,7 +28,7 @@ $port   = $options['port'] ?? $config['port'];
 $root   = $options['root'] ?? $config['root'] ;
 $router = __DIR__ . '/server_router.php';
 
-echo "PHP Server Version 2.1\n";
+echo "PHP Server Version 2.2\n";
 echo "PHP: {$php}\n";
 echo "Web Address: http://{$host}:{$port}\n";
 echo "Document Root: {$root}\n";
