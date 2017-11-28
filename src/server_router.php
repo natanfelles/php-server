@@ -27,6 +27,7 @@ foreach ($config['server'] as $key => $value)
 
 if (isset($_GET['php-server']) && $_GET['php-server'] === 'phpinfo')
 {
+	clean_vars();
 	phpinfo();
 
 	return true;
@@ -45,6 +46,8 @@ define('DIR', $config['root'] . RDIR);
 // If is not a dir get the file content
 if (! is_dir(DIR) && is_file(DIR))
 {
+	clean_vars();
+
 	return false;
 }
 
@@ -56,6 +59,8 @@ foreach ($indexes as $index)
 	// Check if has an index inside the current dir
 	if (is_file($index = DIR . '/' . $index))
 	{
+		clean_vars();
+
 		require_once $index;
 
 		return true;
@@ -67,6 +72,8 @@ foreach ($indexes as $index)
 {
 	if (is_file($index = $config['root'] . '/' . $index))
 	{
+		clean_vars();
+
 		require_once $index;
 
 		return true;
@@ -83,12 +90,16 @@ if (! file_exists(DIR))
 
 	require_once __DIR__ . '/pages/_template.php';
 
+	clean_vars();
+
 	return true;
 }
 
 // If autoindex is disabled the paths list will not be showed
 if ((bool)$config['autoindex'] === false)
 {
+	clean_vars();
+
 	return true;
 }
 
@@ -143,8 +154,31 @@ function size_conversion($size)
 	return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
 }
 
+function clean_vars()
+{
+	foreach (array_keys($GLOBALS) as $var)
+	{
+		if (in_array($var, [
+						   '_GET',
+						   '_POST',
+						   '_COOKIE',
+						   '_FILES',
+						   '_ENV',
+						   '_REQUEST',
+						   '_SERVER',
+						   'GLOBALS',
+					   ]))
+		{
+			continue;
+		}
+		unset($GLOBALS[$var]);
+	}
+}
+
 $title = 'Index of ' . (empty(RDIR) ? '/' : RDIR);
 
 $page = 'default';
 
 require_once __DIR__ . '/pages/_template.php';
+
+clean_vars();
