@@ -64,7 +64,7 @@ ENVIRONMENT = development;
 
 | Key | Default Value| Description |
 | --------------- | --- | --- |
-| php | [PHP_BINARY](php.net/manual/en/reserved.constants.php#constant.php-binary) | PHP binary path or command |
+| php | [PHP_BINARY](http://php.net/manual/en/reserved.constants.php#constant.php-binary) | PHP binary path or command |
 | host | localhost | Server host |
 | port | 8080 | Server host port |
 | root | [getcwd()](http://php.net/manual/en/function.getcwd.php) | Document root. The location that will be the public root of your website. |
