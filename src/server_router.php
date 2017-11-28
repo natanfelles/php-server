@@ -8,6 +8,9 @@
  * @link   https://github.com/natanfelles/php-server
  */
 
+// Load our functions...
+require_once 'functions.php';
+
 /**
  * @var array Server config
  */
@@ -27,7 +30,7 @@ foreach ($config['server'] as $key => $value)
 
 if (isset($_GET['php-server']) && $_GET['php-server'] === 'phpinfo')
 {
-	clean_vars();
+	$function_clean_vars();
 	phpinfo();
 
 	return true;
@@ -46,7 +49,7 @@ define('DIR', $config['root'] . RDIR);
 // If is not a dir get the file content
 if (! is_dir(DIR) && is_file(DIR))
 {
-	clean_vars();
+	$function_clean_vars();
 
 	return false;
 }
@@ -59,7 +62,7 @@ foreach ($indexes as $index)
 	// Check if has an index inside the current dir
 	if (is_file($index = DIR . '/' . $index))
 	{
-		clean_vars();
+		$function_clean_vars();
 
 		require_once $index;
 
@@ -72,7 +75,7 @@ foreach ($indexes as $index)
 {
 	if (is_file($index = $config['root'] . '/' . $index))
 	{
-		clean_vars();
+		$function_clean_vars();
 
 		require_once $index;
 
@@ -90,7 +93,7 @@ if (! file_exists(DIR))
 
 	require_once __DIR__ . '/pages/_template.php';
 
-	clean_vars();
+	$function_clean_vars();
 
 	return true;
 }
@@ -98,7 +101,7 @@ if (! file_exists(DIR))
 // If autoindex is disabled the paths list will not be showed
 if ((bool)$config['autoindex'] === false)
 {
-	clean_vars();
+	$function_clean_vars();
 
 	return true;
 }
@@ -121,7 +124,7 @@ foreach ($filesystem as $pathname => $SplFileInfo)
 		'realPath' => $SplFileInfo->getRealPath(),
 		'filename' => $SplFileInfo->getFilename(),
 		'isDir'    => $SplFileInfo->isDir(),
-		'size'     => $SplFileInfo->isDir() ? iterator_count($fi) . ' items' : size_conversion($SplFileInfo->getSize()),
+		'size'     => $SplFileInfo->isDir() ? iterator_count($fi) . ' items' : $function_size_conversion($SplFileInfo->getSize()),
 		'owner'    => $SplFileInfo->getOwner(),
 		'group'    => $SplFileInfo->getGroup(),
 		'perms'    => substr(sprintf('%o', $SplFileInfo->getPerms()), -4),
@@ -130,55 +133,10 @@ foreach ($filesystem as $pathname => $SplFileInfo)
 }
 sort($paths);
 
-/**
- * Convert a number to computer size
- *
- * @param integer $size
- *
- * @return string
- */
-function size_conversion($size)
-{
-	$units = [
-		'B',
-		'KB',
-		'MB',
-		'GB',
-		'TB',
-		'PB',
-		'EB',
-		'ZB',
-		'YB',
-	];
-	$power = $size > 0 ? floor(log($size, 1024)) : 0;
-	return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
-}
-
-function clean_vars()
-{
-	foreach (array_keys($GLOBALS) as $var)
-	{
-		if (in_array($var, [
-						   '_GET',
-						   '_POST',
-						   '_COOKIE',
-						   '_FILES',
-						   '_ENV',
-						   '_REQUEST',
-						   '_SERVER',
-						   'GLOBALS',
-					   ]))
-		{
-			continue;
-		}
-		unset($GLOBALS[$var]);
-	}
-}
-
 $title = 'Index of ' . (empty(RDIR) ? '/' : RDIR);
 
 $page = 'default';
 
 require_once __DIR__ . '/pages/_template.php';
 
-clean_vars();
+$function_clean_vars();
