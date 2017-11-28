@@ -56,8 +56,9 @@ $indexes = explode(' ', trim($config['index']));
 foreach ($indexes as $index)
 {
 	// Check if has an index inside the current dir
-	if (is_file($_SERVER['PHPSERVER_INDEX'] = $absolute_path . '/' . $index))
+	if (is_file($absolute_path . '/' . $index))
 	{
+		$_SERVER['PHPSERVER_INDEX'] = $absolute_path . '/' . $index;
 		$function_clean_vars();
 
 		require $_SERVER['PHPSERVER_INDEX'];
@@ -69,8 +70,9 @@ foreach ($indexes as $index)
 // Rewrite - Check if has an index in the document root
 foreach ($indexes as $index)
 {
-	if (is_file($_SERVER['PHPSERVER_INDEX'] = $config['root'] . '/' . $index))
+	if (is_file($config['root'] . '/' . $index))
 	{
+		$_SERVER['PHPSERVER_INDEX'] = $config['root'] . '/' . $index;
 		$function_clean_vars();
 
 		require $_SERVER['PHPSERVER_INDEX'];
