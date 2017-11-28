@@ -37,17 +37,13 @@ if (isset($_GET['php-server']) && $_GET['php-server'] === 'phpinfo')
 }
 
 /**
- * Relative directory path
+ * Relative and Absolute directory path
  */
-define('RDIR', preg_replace('/\/$/', '', urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))));
-
-/**
- * Absolute directory path
- */
-define('DIR', $config['root'] . RDIR);
+$relative_path = preg_replace('/\/$/', '', urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+$absolute_path = $config['root'] . $relative_path;
 
 // If is not a dir get the file content
-if (! is_dir(DIR) && is_file(DIR))
+if (! is_dir($absolute_path) && is_file($absolute_path))
 {
 	$function_clean_vars();
 
@@ -60,7 +56,7 @@ $indexes = explode(' ', trim($config['index']));
 foreach ($indexes as $index)
 {
 	// Check if has an index inside the current dir
-	if (is_file($index = DIR . '/' . $index))
+	if (is_file($index = $absolute_path . '/' . $index))
 	{
 		$function_clean_vars();
 
@@ -85,7 +81,7 @@ foreach ($indexes as $index)
 
 // If has not any index and the called file or dir does not exist
 // means that we need a Error 404
-if (! file_exists(DIR))
+if (! file_exists($absolute_path))
 {
 	http_response_code(404);
 	$title = 'Error 404';
@@ -107,7 +103,7 @@ if ((bool)$config['autoindex'] === false)
 }
 
 // File System iterator
-$filesystem = iterator_to_array(new FilesystemIterator(DIR));
+$filesystem = iterator_to_array(new FilesystemIterator($absolute_path));
 
 // All child paths
 $paths = [];
@@ -133,7 +129,7 @@ foreach ($filesystem as $pathname => $SplFileInfo)
 }
 sort($paths);
 
-$title = 'Index of ' . (empty(RDIR) ? '/' : RDIR);
+$title = 'Index of ' . (empty($relative_path) ? '/' : $relative_path);
 
 $page = 'default';
 

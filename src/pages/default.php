@@ -1,6 +1,6 @@
-<?php if(! empty(RDIR)): ?>
+<?php if(! empty($relative_path)): ?>
 	<?php
-	$rdirs = explode('/', RDIR);
+	$rdirs = explode('/', $relative_path);
 	array_pop($rdirs);
 	$rdirs = implode('/', $rdirs);
 	?>
@@ -27,7 +27,7 @@
 <?php foreach($paths as $path): ?>
 		<tr>
 			<td><?= $path['type'] ?></td>
-			<td><a href="<?= RDIR . '/' . $path['filename']  ?>"><?= $path['filename'] ?></a></td>
+			<td><a href="<?= $relative_path . '/' . $path['filename']  ?>"><?= $path['filename'] ?></a></td>
 			<td><?= $path['size'] ?></td>
 			<td><?= $path['owner'] ?></td>
 			<td><?= $path['group'] ?></td>
