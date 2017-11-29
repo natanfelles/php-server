@@ -22,10 +22,10 @@ foreach ($config['ini'] as $key => $value)
 
 $options = getopt(null, ['php:', 'host:', 'port:', 'root:']);
 
-$php    = $options['php'] ?? $config['php'];
-$host   = $options['host'] ?? $config['host'];
-$port   = $options['port'] ?? $config['port'];
-$root   = $options['root'] ?? $config['root'] ;
+$php    = isset($options['php']) ? $options['php'] : $config['php'];
+$host   = isset($options['host']) ? $options['host'] : $config['host'];
+$port   = isset($options['port']) ? $options['port'] : $config['port'];
+$root   = isset($options['root']) ? $options['root'] : $config['root'] ;
 $router = __DIR__ . '/server_router.php';
 
 echo "PHP Server Version 2.2\n";
