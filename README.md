@@ -115,9 +115,3 @@ Right. You get the idea. If you want to run on a different host you can add the 
 Hello, how nice that you are reading this.
 
 If you have any idea to improve this project or something is not working as it should, do not hesitate to open an [issue](https://github.com/natanfelles/php-server/issues) and if you have solved the problem feel free to open a [Pull Request](https://github.com/natanfelles/php-server/pulls).
-
-So, I work with web development and love to do it.
-
-If you have conditions and think that this project is useful to you (or not, haha), send me some coffee beans:
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2EYQMLYN8GSU6)
