@@ -58,6 +58,8 @@ upload_max_filesize = 200M
 ENVIRONMENT = development
 ```
 
+> You can use the command `php-server new` to create a new configuration file in the current directory.
+
 ### Explanation
 
 #### General Vars
