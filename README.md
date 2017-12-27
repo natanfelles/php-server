@@ -39,23 +39,23 @@ Each time you run the *php-server* command, it will look up if there is a file n
 A quick example file content is:
 
 ```ini
-php = PHP_BINARY;
-host = localhost;
-port = 8080;
-root = ./public;
-autoindex = true;
-index = index.php;
-error_reporting = E_ALL;
+php = PHP_BINARY
+host = localhost
+port = 8080
+root = ./public
+autoindex = true
+index = index.php
+error_reporting = E_ALL
 
 [ini]
-display_errors = 1;
-display_startup_errors = 1;
-max_execution_time = 360;
-post_max_size = 200M;
-upload_max_filesize = 200M;
+display_errors = 1
+display_startup_errors = 1
+max_execution_time = 360
+post_max_size = 200M
+upload_max_filesize = 200M
 
 [server]
-ENVIRONMENT = development;
+ENVIRONMENT = development
 ```
 
 ### Explanation
