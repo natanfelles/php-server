@@ -122,9 +122,11 @@ foreach ($filesystem as $pathname => $SplFileInfo)
 		'group'    => $SplFileInfo->getGroup(),
 		'perms'    => substr(sprintf('%o', $SplFileInfo->getPerms()), -4),
 		'mTime'    => date('Y-m-d H:i:s', $SplFileInfo->getMTime()),
+		'href'     => $function_path_href($SplFileInfo),
 	];
 }
 sort($paths);
+//$paths = $function_order_paths($paths);
 
 $title = 'Index of ' . (empty($relative_path) ? '/' : $relative_path);
 

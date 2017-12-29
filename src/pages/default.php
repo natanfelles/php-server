@@ -9,13 +9,13 @@
 <table>
 	<thead>
 		<tr>
-			<th>Type</th>
-			<th>Name</th>
-			<th>Size</th>
-			<th>Owner</th>
-			<th>Group</th>
-			<th>Permissions</th>
-			<th>Modified</th>
+			<?= $function_order_link('type', 'Type') ?>
+			<?= $function_order_link('filename', 'Name') ?>
+			<?= $function_order_link('size', 'Size') ?>
+			<?= $function_order_link('owner', 'Owner') ?>
+			<?= $function_order_link('group', 'Group') ?>
+			<?= $function_order_link('perms', 'Permissions') ?>
+			<?= $function_order_link('mTime', 'Modified') ?>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,7 +27,7 @@
 <?php foreach($paths as $path): ?>
 		<tr>
 			<td><?= $path['type'] ?></td>
-			<td><a href="<?= $relative_path . '/' . $path['filename']  ?>"><?= $path['filename'] ?></a></td>
+			<td><a href="<?= $path['href'] ?>"><?= $path['filename'] ?></a></td>
 			<td><?= $path['size'] ?></td>
 			<td><?= $path['owner'] ?></td>
 			<td><?= $path['group'] ?></td>
