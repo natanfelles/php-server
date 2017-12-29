@@ -169,7 +169,7 @@ if (strpos($title, 'Index of ') === 0)
 
 		for (var i = 0; i < uris.length; i++)
 		{
-			uris[i].addEventListener('mouseover', function (argument) {
+			uris[i].addEventListener('mouseover', function () {
 				for (var i = 0; i < uris.length; i++)
 				{
 					if (uris[i].getAttribute('data-id') <= this.getAttribute('data-id'))
@@ -179,7 +179,7 @@ if (strpos($title, 'Index of ') === 0)
 				}
 			}, true);
 
-			uris[i].addEventListener('mouseout', function (argument) {
+			uris[i].addEventListener('mouseout', function () {
 				for (var i = 0; i < uris.length; i++)
 				{
 					removeClass(uris[i], 'active');
