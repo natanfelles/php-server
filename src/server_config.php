@@ -18,7 +18,9 @@ $default_config = [
 	   'display_startup_errors' => 1,
 	   'max_execution_time'     => 360,
    ],
-   'server'          => [],
+   'server'          => [
+	   'PHPSERVER_VERSION' => '2.4',
+   ],
 ];
 
 if (isset($custom_config['root']))

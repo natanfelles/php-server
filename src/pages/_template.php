@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title><?= $title ?></title>
+	<link rel="shortcut icon" href="data:image/png;base64,<?= base64_encode(file_get_contents(__DIR__ . '/favicon.png')) ?>">
 	<style type="text/css">
 		body {
 			margin: 20px;
@@ -12,6 +13,21 @@
 			line-height: 1.5rem;
 			color: #333;
 			background: #f2f2f2;
+		}
+		a {
+			color: #369;
+		}
+		a:hover {
+			color: #ae508d;
+			border-color: #ae508d;
+			outline: 0;
+		}
+		.version {
+			text-align: right;
+		}
+		.version a {
+			text-decoration: none;
+			color: #333;
 		}
 		h1, h1 a {
 			line-height: 3rem;
@@ -51,27 +67,36 @@
 		}
 		td, th {
 			border-bottom: 1px solid #ccc;
-			padding: .25rem .5rem;
+			text-indent: .5rem;
 		}
 		th {
-			border-color: #C4C9DF;
-			background: #C4C9DF;
+			border-color: #c4c9df;
+			background: #c4c9df;
+			border-right: 1px dotted #ccc;
 		}
-		a {
-			color: #369;
+		th a {
+			color: #333;
+			text-decoration: none;
+			padding: .25rem 0;
+			width: 100%;
+			display: block;
 		}
-		a:hover {
-			color: #AE508D;
-			border-color: #AE508D;
-			outline: 0;
+		.version a:hover,
+		th a:hover {
+			color: #793862;
+		}
+		th a span {
+			float: right;
+			min-width: 20px;
+			display: block;
 		}
 		.date {
 			float: right;
 			font-size: .875rem;
 		}
 		.error {
-			background: #F4DFDF;
-			border: 1px solid #EABFBF;
+			background: #f4dfdf;
+			border: 1px solid #eabfbf;
 			padding: .75rem;
 			margin: 1.5rem 0;
 			overflow: hidden;
@@ -107,7 +132,12 @@ if (strpos($title, 'Index of ') === 0)
 		PHP <?= phpversion() ?> Built-in web server -
 		<a href="/?php-server=phpinfo">info</a> <span class="date"><?= date('r') ?></span>
 	</p>
-	<?php require_once __DIR__ . "/{$page}.php"; ?>
+
+<?php require_once __DIR__ . "/{$page}.php"; ?>
+
+	<p class="version">
+		<a href="https://github.com/natanfelles/php-server/releases/tag/v<?= $_SERVER['PHPSERVER_VERSION'] ?>" target="_blank"><?= 'php-server v' . $_SERVER['PHPSERVER_VERSION'] ?></a>
+	</p>
 
 	<script type="text/javascript">
 		function addClass(el, className)

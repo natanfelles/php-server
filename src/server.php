@@ -69,7 +69,7 @@ $port   = isset($options['port']) ? $options['port'] : $config['port'];
 $root   = isset($options['root']) ? $options['root'] : $config['root'] ;
 $router = __DIR__ . '/server_router.php';
 
-echo "PHP Server Version 2.4\n";
+echo "PHP Server Version {$config['PHPSERVER_VERSION']}\n";
 echo "PHP: {$php}\n";
 echo "Web Address: http://{$host}:{$port}\n";
 echo "Document Root: {$root}\n";
