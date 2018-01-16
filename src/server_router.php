@@ -107,6 +107,11 @@ $paths = [];
 
 foreach ($filesystem as $pathname => $SplFileInfo)
 {
+	if (! file_exists($SplFileInfo->getRealPath()))
+	{
+		continue;
+	}
+
 	if ($SplFileInfo->isDir())
 	{
 		$fi = new FilesystemIterator($SplFileInfo->getRealPath());
@@ -117,11 +122,11 @@ foreach ($filesystem as $pathname => $SplFileInfo)
 		'realPath' => $SplFileInfo->getRealPath(),
 		'filename' => $SplFileInfo->getFilename(),
 		'isDir'    => $SplFileInfo->isDir(),
-		'size'     => $SplFileInfo->isDir() ? iterator_count($fi) . ' items' : $function_size_conversion($SplFileInfo->getSize()),
+		'size'     => $SplFileInfo->isDir() ? iterator_count($fi) . ' items' : $SplFileInfo->getSize(),
 		'owner'    => $SplFileInfo->getOwner(),
 		'group'    => $SplFileInfo->getGroup(),
 		'perms'    => substr(sprintf('%o', $SplFileInfo->getPerms()), -4),
-		'mTime'    => date('Y-m-d H:i:s', $SplFileInfo->getMTime()),
+		'mTime'    => $SplFileInfo->getMTime(),
 		'href'     => $function_path_href($SplFileInfo),
 	];
 }

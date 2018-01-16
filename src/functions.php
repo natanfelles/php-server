@@ -116,9 +116,6 @@ $function_order_paths = function ($paths) {
 		usort($paths, function ($path1, $path2) {
 			$order_by = $_GET['order_by'];
 
-			$path1['mTime'] = strtotime($path1['mTime']);
-			$path2['mTime'] = strtotime($path2['mTime']);
-
 			if ($path1[$order_by] === $path2[$order_by])
 			{
 				return 0;
@@ -131,6 +128,16 @@ $function_order_paths = function ($paths) {
 	if (isset($_GET['order']) && $_GET['order'] === 'asc')
 	{
 		$paths = array_reverse($paths);
+	}
+
+	$count = count($paths);
+
+	for ($i = 0; $i < $count; $i++)
+	{
+		$paths[$i]['mTime'] = date('Y-m-d H:i:s', $paths[$i]['mTime']);
+		$paths[$i]['size']  = strpos($paths[$i]['size'], 'item') !== false
+							  ? $paths[$i]['size']
+							  : $GLOBALS['function_size_conversion']($paths[$i]['size']);
 	}
 
 	return $paths;
