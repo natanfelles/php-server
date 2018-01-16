@@ -125,8 +125,8 @@ foreach ($filesystem as $pathname => $SplFileInfo)
 		'href'     => $function_path_href($SplFileInfo),
 	];
 }
-sort($paths);
-//$paths = $function_order_paths($paths);
+
+$paths = $function_order_paths($paths);
 
 $title = 'Index of ' . (empty($relative_path) ? '/' : $relative_path);
 

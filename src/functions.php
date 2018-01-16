@@ -6,6 +6,7 @@
  *
  * @return string
  */
+
 $function_size_conversion = function ($size) {
 	$units = [
 		'B',
@@ -100,22 +101,37 @@ $function_path_href = function ($SplFileInfo) {
 };
 
 $function_order_paths = function ($paths) {
-	$order_by = isset($_GET['order_by']) ? $_GET['order_by'] : 'filename';
-	$types    = [];
-	$keys     = [];
-	$i        = 0;
-	foreach ($paths as $path)
+	sort($paths);
+
+	if (isset($_GET['order_by']) && in_array($_GET['order_by'], [
+				  'type',
+				  'filename',
+				  'size',
+				  'owner',
+				  'group',
+				  'perms',
+				  'mTime',
+			  ]))
 	{
-		$keys[$path['type']][$path[$order_by]] = $path;
-		sort($keys[$path['type']]);
+		usort($paths, function ($path1, $path2) {
+			$order_by = $_GET['order_by'];
+
+			$path1['mTime'] = strtotime($path1['mTime']);
+			$path2['mTime'] = strtotime($path2['mTime']);
+
+			if ($path1[$order_by] === $path2[$order_by])
+			{
+				return 0;
+			}
+
+			return $path1[$order_by] < $path2[$order_by] ? -1 : 1;
+		});
 	}
 
-	foreach ($keys as $k => $v)
+	if (isset($_GET['order']) && $_GET['order'] === 'asc')
 	{
-		//$types[$k];
+		$paths = array_reverse($paths);
 	}
 
-	var_dump($keys);
-	exit;
 	return $paths;
 };
