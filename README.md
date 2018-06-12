@@ -2,7 +2,7 @@
 
 Fine tuning on the PHP Built-in web server
 
-![PHP Built-in web server autoindex](https://i.imgur.com/gOtNMuw.png)
+![PHP Built-in web server autoindex](https://i.imgur.com/dE7B2LJ.png)
 
 ## Installation
 
@@ -107,7 +107,7 @@ php-server --port 8081
 Or, also with a different version of PHP than the default:
 
 ```sh
-php-server --php php7.2 --port 8081
+php-server --php php7.3 --port 8081
 ```
 
 Right. You get the idea. If you want to run on a different host you can add the host to the [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)) of your operating system.
