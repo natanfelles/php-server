@@ -80,7 +80,6 @@ $function_path_href = function ($SplFileInfo) {
 	if ($SplFileInfo->isDir())
 	{
 		if (isset($_GET['order_by']) && in_array($_GET['order_by'], [
-					  'type',
 					  'filename',
 					  'size',
 					  'owner',
@@ -104,7 +103,6 @@ $function_order_paths = function ($paths) {
 	sort($paths);
 
 	if (isset($_GET['order_by']) && in_array($_GET['order_by'], [
-				  'type',
 				  'filename',
 				  'size',
 				  'owner',
@@ -130,15 +128,25 @@ $function_order_paths = function ($paths) {
 		$paths = array_reverse($paths);
 	}
 
-	$count = count($paths);
+	$dirs  = [];
+	$files = [];
 
-	for ($i = 0; $i < $count; $i++)
+	foreach ($paths as $path)
 	{
-		$paths[$i]['mTime'] = date('Y-m-d H:i:s', $paths[$i]['mTime']);
-		$paths[$i]['size']  = strpos($paths[$i]['size'], 'item') !== false
-							  ? $paths[$i]['size']
-							  : $GLOBALS['function_size_conversion']($paths[$i]['size']);
+		$path['mTime'] = date('Y-m-d H:i:s', $path['mTime']);
+		$path['size']  = $path['isDir']
+						 ? $path['size'] . ' item' . ($path['size'] < 2 ? '' : 's')
+						 : $GLOBALS['function_size_conversion']($path['size']);
+
+		if ($path['isDir'])
+		{
+			$dirs[] = $path;
+		}
+		else
+		{
+			$files[] = $path;
+		}
 	}
 
-	return $paths;
+	return array_merge($dirs, $files);
 };

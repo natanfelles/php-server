@@ -9,7 +9,6 @@
 <table>
 	<thead>
 		<tr>
-			<?= $function_order_link('type', 'Type') ?>
 			<?= $function_order_link('filename', 'Name') ?>
 			<?= $function_order_link('size', 'Size') ?>
 			<?= $function_order_link('owner', 'Owner') ?>
@@ -21,13 +20,15 @@
 	<tbody>
 <?php if(empty($paths)): ?>
 		<tr>
-			<td colspan="7">This directory is empty.</td>
+			<td colspan="6">This directory is empty.</td>
 		</tr>
 <?php endif ?>
 <?php foreach($paths as $path): ?>
 		<tr>
-			<td><?= $path['type'] ?></td>
-			<td><a href="<?= $path['href'] ?>"><?= $path['filename'] ?></a></td>
+			<td>
+				<span><?= $path['type'] ?></span>
+				<a href="<?= $path['href'] ?>"><?= $path['filename'] ?></a>
+			</td>
 			<td><?= $path['size'] ?></td>
 			<td><?= $path['owner'] ?></td>
 			<td><?= $path['group'] ?></td>

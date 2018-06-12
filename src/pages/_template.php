@@ -90,6 +90,12 @@
 			min-width: 20px;
 			display: block;
 		}
+		td span {
+			color: gray;
+			min-width: 30px;
+			display: inline-block;
+			text-indent: 0;
+		}
 		.date {
 			float: right;
 			font-size: .875rem;
@@ -140,31 +146,6 @@ if (strpos($title, 'Index of ') === 0)
 	</p>
 
 	<script type="text/javascript">
-		function addClass(el, className)
-		{
-			if (el.classList)
-			{
-				el.classList.add(className);
-			}
-			else
-			{
-				el.className += ' ' + className;
-			}
-		}
-
-		function removeClass(el, className)
-		{
-			if (el.classList)
-			{
-				el.classList.remove(className);
-			}
-			else
-			{
-				el.className = el.className.replace(new RegExp('(^|\\b)' +
-							   className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-			}
-		}
-
 		var uris = document.getElementsByClassName('uri');
 
 		for (var i = 0; i < uris.length; i++)
@@ -174,7 +155,7 @@ if (strpos($title, 'Index of ') === 0)
 				{
 					if (uris[i].getAttribute('data-id') <= this.getAttribute('data-id'))
 					{
-						addClass(uris[i], 'active');
+						uris[i].classList.add('active');
 					}
 				}
 			}, true);
@@ -182,7 +163,7 @@ if (strpos($title, 'Index of ') === 0)
 			uris[i].addEventListener('mouseout', function () {
 				for (var i = 0; i < uris.length; i++)
 				{
-					removeClass(uris[i], 'active');
+					uris[i].classList.remove('active');
 				}
 			}, true);
 		}
