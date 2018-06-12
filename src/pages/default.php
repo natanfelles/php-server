@@ -4,7 +4,10 @@
 	array_pop($rdirs);
 	$rdirs = implode('/', $rdirs);
 	?>
-<p><a href="<?= ! empty($rdirs) ? $rdirs : '/' ?>">Parent dir</a></p>
+<p class="half"><a href="<?= ! empty($rdirs) ? $rdirs : '/' ?>">Parent dir</a></p>
+<?php endif ?>
+<?php if(! empty($paths)): ?>
+<p class="half" style="float: right"><input type="text" id="search" placeholder="Search..."></p>
 <?php endif ?>
 <table>
 	<thead>

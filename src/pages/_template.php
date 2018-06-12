@@ -47,6 +47,9 @@
 			margin-top: -1px;
 			border-bottom: 1px dotted;
 		}
+		p {
+			margin: 10px 0;
+		}
 		table {
 			border: 1px solid #ccc;
 			border-collapse: collapse;
@@ -68,6 +71,7 @@
 		td, th {
 			border-bottom: 1px solid #ccc;
 			text-indent: .5rem;
+			padding: 2px ;
 		}
 		th {
 			border-color: #c4c9df;
@@ -106,6 +110,21 @@
 			padding: .75rem;
 			margin: 1.5rem 0;
 			overflow: hidden;
+		}
+		#search {
+			float: right;
+			background: #fff;
+			border: 1px solid #ccc;
+			padding: .125rem .5rem;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, .2);
+			color: #333;
+		}
+		#search:focus {
+			border-color: #369;
+		}
+		.half {
+			width: 50%;
+			float: left;
 		}
 	</style>
 </head>
@@ -166,6 +185,30 @@ if (strpos($title, 'Index of ') === 0)
 					uris[i].classList.remove('active');
 				}
 			}, true);
+		}
+
+		var search = document.getElementById('search');
+
+		if (search) {
+			search.value = '';
+			search.focus();
+			search.onkeyup = function () {
+				var filter, table, tr, td, i;
+				filter = this.value.toUpperCase();
+				table = document.getElementsByTagName('table')[0];
+				tr = table.getElementsByTagName('tr');
+
+				for (i = 0; i < tr.length; i++) {
+					td = tr[i].getElementsByTagName('td')[0];
+					if (td) {
+						if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+							tr[i].style.display = '';
+						} else {
+							tr[i].style.display = 'none';
+						}
+					}
+				}
+			}
 		}
 	</script>
 </body>
