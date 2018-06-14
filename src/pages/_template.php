@@ -193,22 +193,18 @@ if (strpos($title, 'Index of ') === 0)
 			search.value = '';
 			search.focus();
 			search.onkeyup = function () {
-				var filter, table, tr, td, i;
-				filter = this.value.toUpperCase();
-				table = document.getElementsByTagName('table')[0];
-				tr = table.getElementsByTagName('tr');
+				var filter = this.value.toUpperCase();
+				var table = document.getElementsByTagName('table')[0];
+				var tr = table.getElementsByTagName('tr');
 
-				for (i = 0; i < tr.length; i++) {
-					td = tr[i].getElementsByTagName('td')[0];
-					if (td) {
-						if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-							tr[i].style.display = '';
-						} else {
-							tr[i].style.display = 'none';
-						}
+				for (var i = 1; i < tr.length; i++) {
+					if (tr[i].innerText.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = '';
+					} else {
+						tr[i].style.display = 'none';
 					}
 				}
-			}
+			};
 		}
 	</script>
 </body>
