@@ -35,7 +35,7 @@ $posix = function_exists('posix_getpwuid') && function_exists('posix_getgrgid');
 	if ($posix)
 	{
 		$user = posix_getpwuid($path['owner']);
-		$user = $user['name'] . ($user['gecos'] ? ' - '. $user['gecos'] : '');
+		$user = $user['name'] . ($user['gecos'] ? ' - '. rtrim($user['gecos'], ',') : '');
 
 		$group = posix_getgrgid($path['group'])['name'];
 	}
