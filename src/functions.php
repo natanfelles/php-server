@@ -100,7 +100,7 @@ $function_path_href = function ($SplFileInfo) {
 };
 
 $function_order_paths = function ($paths) {
-	sort($paths);
+	array_multisort(array_keys($paths), SORT_NATURAL | SORT_FLAG_CASE, $paths);
 
 	if (isset($_GET['order_by']) && in_array($_GET['order_by'], [
 				  'filename',
