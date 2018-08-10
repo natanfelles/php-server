@@ -56,7 +56,7 @@ EOD;
 /**
  * @var array Server config
  */
-$config = require_once 'server_config.php';
+$config = require __DIR__ . '/server_config.php';
 
 $ini = '';
 foreach ($config['ini'] as $key => $value)

@@ -9,12 +9,12 @@
  */
 
 // Load our functions...
-require_once 'functions.php';
+require __DIR__ . '/functions.php';
 
 /**
  * @var array Server config
  */
-$config = require_once 'server_config.php';
+$config = require __DIR__ . '/server_config.php';
 
 error_reporting($config['error_reporting']);
 
@@ -84,7 +84,7 @@ if (! file_exists($absolute_path))
 	$title = 'Error 404';
 	$page  = 'error-404';
 
-	require_once __DIR__ . '/pages/_template.php';
+	require __DIR__ . '/pages/_template.php';
 
 	$function_clean_vars();
 
@@ -117,7 +117,7 @@ foreach ($filesystem as $pathname => $SplFileInfo)
 		$fi = new FilesystemIterator($SplFileInfo->getRealPath());
 	}
 
-	$paths[] = [
+	$paths[$pathname] = [
 		'type'     => $SplFileInfo->getType(),
 		'realPath' => $SplFileInfo->getRealPath(),
 		'filename' => $SplFileInfo->getFilename(),
@@ -137,6 +137,6 @@ $title = 'Index of ' . (empty($relative_path) ? '/' : $relative_path);
 
 $page = 'default';
 
-require_once __DIR__ . '/pages/_template.php';
+require __DIR__ . '/pages/_template.php';
 
 $function_clean_vars();
