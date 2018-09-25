@@ -53,6 +53,9 @@ display_startup_errors = 1
 max_execution_time = 360
 post_max_size = 200M
 upload_max_filesize = 200M
+; Array of runtime extensions:
+extension[] = mysqli
+extension[] = zip
 
 [server]
 ENVIRONMENT = development

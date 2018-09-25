@@ -61,7 +61,17 @@ $config = require __DIR__ . '/server_config.php';
 $ini = '';
 foreach ($config['ini'] as $key => $value)
 {
-	$ini .= " -d {$key}={$value}";
+	if(is_array($value))
+	{
+		foreach ($value as $val)
+		{
+			$ini .= " -d {$key}={$val}";
+		}
+	}
+	else
+	{
+		$ini .= " -d {$key}={$value}";
+	}
 }
 
 $options = getopt(null, ['php:', 'host:', 'port:', 'root:']);
