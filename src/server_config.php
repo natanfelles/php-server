@@ -2,7 +2,7 @@
 
 if (file_exists($custom_config_file = getcwd() . '/php-server.ini'))
 {
-	$custom_config = parse_ini_file($custom_config_file, true);
+	$custom_config = parse_ini_file($custom_config_file, true, INI_SCANNER_TYPED);
 }
 
 $default_config = [
@@ -19,7 +19,7 @@ $default_config = [
 	   'max_execution_time'     => 360,
    ],
    'server'          => [
-	   'PHPSERVER_VERSION' => '2.6',
+	   'PHPSERVER_VERSION' => '2.7',
    ],
 ];
 

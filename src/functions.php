@@ -6,7 +6,6 @@
  *
  * @return string
  */
-
 $function_size_conversion = function ($size) {
 	$units = [
 		'B',
