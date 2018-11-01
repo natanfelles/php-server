@@ -24,6 +24,9 @@ if (in_array('new', $argv))
 			'upload_max_filesize' => ini_get('upload_max_filesize'),
 		];
 		$content = <<<EOD
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; php-server configuration file - https://github.com/natanfelles/php-server ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 php = PHP_BINARY
 host = localhost
 port = 8080
