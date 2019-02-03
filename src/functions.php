@@ -149,3 +149,7 @@ $function_order_paths = function ($paths) {
 
 	return array_merge($dirs, $files);
 };
+
+$function_color = function ($text) {
+	return "\033[0;32m$text\033[0m";
+};
