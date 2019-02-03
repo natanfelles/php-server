@@ -5,6 +5,13 @@
     "keywords": [
         "server",
         "php-server",
+        "webserver",
+        "dev",
+        "development",
+        "cocument-root",
+        "autoindex",
+        "rewrite",
+        "mod-rewrite",
         "devtools"
     ],
     "homepage": "https://github.com/natanfelles/php-server",
