@@ -1,6 +1,6 @@
 <?php
 
-if (file_exists($custom_config_file = getcwd() . '/php-server.ini'))
+if (is_file($custom_config_file = getcwd() . '/php-server.ini'))
 {
 	$custom_config = parse_ini_file($custom_config_file, true, INI_SCANNER_TYPED);
 }
