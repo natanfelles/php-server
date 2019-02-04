@@ -133,6 +133,7 @@ $router = __DIR__ . '/server_router.php';
 echo $function_color('Version:') . " {$config['server']['PHPSERVER_VERSION']}\n";
 echo $function_color('PHP Binary:') . " {$php}\n";
 echo $function_color('Document Root:') . " {$root}\n";
-echo $function_color('Web Address:') . " http://{$host}:{$port}\n\n";
+echo $function_color('Web Address:') . " http://{$host}:{$port}\n";
+echo $function_color('Date:') . ' ' . date('r') . "\n\n";
 
 passthru("{$php}{$ini} -S {$host}:{$port} -t {$root} {$router}");
