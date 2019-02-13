@@ -8,7 +8,7 @@
         "webserver",
         "dev",
         "development",
-        "cocument-root",
+        "document-root",
         "autoindex",
         "rewrite",
         "mod-rewrite",
@@ -20,13 +20,11 @@
         {
             "name": "Natan Felles",
             "email": "natanfelles@gmail.com",
-            "homepage": "https://natanfelles.github.io",
-            "role": "lead"
+            "homepage": "https://natanfelles.github.io"
         }
     ],
     "support": {
         "issues": "https://github.com/natanfelles/php-server/issues",
-        "wiki": "https://github.com/natanfelles/php-server/wiki",
         "source": "https://github.com/natanfelles/php-server"
     },
     "require": {

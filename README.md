@@ -1,5 +1,9 @@
 # PHP Server
 
+[![Latest release](https://img.shields.io/github/release/natanfelles/php-server.svg?colorB=green&label=Latest%20release&style=popout)](https://github.com/natanfelles/php-server/releases)
+[![PHP version](https://img.shields.io/packagist/php-v/natanfelles/php-server.svg?colorB=blueviolet&label=PHP%20version&style=flat)](https://php.net/downloads.php)
+[![Packagist downloads](https://img.shields.io/packagist/dt/natanfelles/php-server.svg?colorB=%23f28d1a&label=Packagist%20downloads&style=flat)](https://packagist.org/packages/natanfelles/php-server)
+
 Fine tuning on the PHP Built-in web server
 
 ![PHP Built-in web server autoindex](https://i.imgur.com/dE7B2LJ.png)
@@ -110,7 +114,7 @@ php-server --port 8081
 Or, also with a different version of PHP than the default:
 
 ```sh
-php-server --php php7.3 --port 8081
+php-server --php php7.4 --port 8081
 ```
 
 Right. You get the idea. If you want to run on a different host you can add the host to the [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)) of your operating system.
