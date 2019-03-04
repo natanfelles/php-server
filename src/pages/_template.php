@@ -99,23 +99,45 @@
 			min-width: 30px;
 			display: inline-block;
 			text-indent: 0;
-
 		}
-		.file-code {
-			border: 1px gray solid;
-			padding: 1%;
-			background: #fff;
-			overflow-x: auto;
-			width: 98%;
-			margin: 0 auto;
-			white-space: pre;
-			word-wrap: break-word;
+		pre, code,
+		.file-code .lines span  {
+			margin: 0;
+			font-family: "Fira Mono", "Source Code Pro", monospace;
+			font-weight: 400;
+			font-size: 1rem;
+			line-height: 1.5rem;
 			-moz-tab-size: 4;
 			-o-tab-size: 4;
 			tab-size: 4;
 		}
-		.file-code code {
-			 white-space: normal;
+		.file-code {
+			border: 1px gray solid;
+			padding: 0;
+			background: #fff;
+			overflow-x: auto;
+			width: 100%;
+			margin: 0 auto;
+		}
+		.file-code > * {
+			float: left;
+		}
+		.file-code .lines {
+			background: #e6e6e6;
+			border-right: 1px gray solid;
+			padding: 0 5px;
+			min-width: 20px;
+		}
+		.file-code .lines span {
+			display: block;
+			line-height: 1.595rem;
+		}
+		.file-code .code {
+			width: 800px;
+			padding-left: 5px;
+		}
+		.file-code .code span {
+			white-space: pre;
 		}
 		.date {
 			float: right;
