@@ -133,7 +133,7 @@
 			line-height: 1.595rem;
 		}
 		.file-code .code {
-			width: 800px;
+			width: 200px;
 			padding-left: 5px;
 		}
 		.file-code .code span {
