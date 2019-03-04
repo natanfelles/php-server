@@ -37,6 +37,23 @@ if (isset($_GET['php-server']) && $_GET['php-server'] === 'phpinfo')
 $relative_path = preg_replace('/\/$/', '', urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
 $absolute_path = $config['root'] . $relative_path;
 
+// Show file contents or goto listAll
+if (isset($_GET['php-server']) && $_GET['php-server'] === 'show')
+{
+	if (is_dir($absolute_path))
+	{
+		goto listAll;
+	}
+
+	$title = 'File ' . $relative_path;
+	$page  = 'show-file';
+
+	require __DIR__ . '/pages/_template.php';
+
+	$function_clean_vars();
+	return true;
+}
+
 // If is not a dir get the file content
 if (! is_dir($absolute_path) && is_file($absolute_path))
 {
@@ -75,6 +92,8 @@ foreach ($indexes as $index)
 		return true;
 	}
 }
+
+listAll:
 
 // If has not any index and the called file or dir does not exist
 // means that we need a Error 404

@@ -99,6 +99,23 @@
 			min-width: 30px;
 			display: inline-block;
 			text-indent: 0;
+
+		}
+		.file-code {
+			border: 1px gray solid;
+			padding: 1%;
+			background: #fff;
+			overflow-x: auto;
+			width: 98%;
+			margin: 0 auto;
+			white-space: pre;
+			word-wrap: break-word;
+			-moz-tab-size: 4;
+			-o-tab-size: 4;
+			tab-size: 4;
+		}
+		.file-code code {
+			 white-space: normal;
 		}
 		.date {
 			float: right;
@@ -130,10 +147,13 @@
 </head>
 <body>
 <?php
-if (strpos($title, 'Index of ') === 0)
+if (strpos($title, 'Index of ') === 0 || strpos($title, 'File ') === 0)
 {
 	$dirs = explode('/', $title);
+	$pre = $dirs[0];
 	unset($dirs[0]);
+
+	$query = isset($_GET['php-server']) ? '?php-server=' . $_GET['php-server'] : '';
 
 	$dirs        = array_values($dirs);
 	$breadcrumbs = '';
@@ -144,12 +164,13 @@ if (strpos($title, 'Index of ') === 0)
 		{
 			$dir .= '/' . $dirs[$s];
 		}
+		$dir .= $query;
 		$breadcrumbs .= "<a href=\"{$dir}\" class=\"uri\" data-id=\"{$i}\">"
 					 . ($i === 0 ? '' : '/')
 					 . "{$dirs[$i]}</a>";
 	}
 
-	$title = 'Index of <a href="/" class="uri" data-id="-1">/</a>' . $breadcrumbs;
+	$title = $pre . ' <a href="/" class="uri" data-id="-1">/</a>' . $breadcrumbs;
 }
 ?>
 	<h1><?= $title ?></h1>

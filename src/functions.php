@@ -153,3 +153,15 @@ $function_order_paths = function ($paths) {
 $function_color = function ($text) {
 	return "\033[0;32m$text\033[0m";
 };
+
+$function_parent_dir = function($relative_path) {
+	if($relative_path):
+		$query = isset($_GET['php-server']) ? '?php-server=' . $_GET['php-server'] : '';
+		$relative_path = explode('/', $relative_path);
+		array_pop($relative_path);
+		$relative_path = implode('/', $relative_path);
+		$relative_path .= $relative_path ? $query : '/' . $query;
+	?>
+<p class="half"><a href="<?= $relative_path ?>">Parent dir</a></p>
+<?php endif;
+};
