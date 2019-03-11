@@ -8,6 +8,8 @@ Fine tuning on the PHP Built-in web server
 
 ![PHP Built-in web server autoindex](https://i.imgur.com/dE7B2LJ.png)
 
+> See release notes at: https://github.com/natanfelles/php-server/releases
+
 ## Installation
 
 ### Composer
@@ -15,7 +17,7 @@ Fine tuning on the PHP Built-in web server
 Open your terminal and run:
 
 ```sh
-composer global require natanfelles/php-server 2.*
+composer global require natanfelles/php-server:dev-master
 ```
 
 Add the composer bin path to your *.bashrc*:
