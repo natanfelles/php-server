@@ -5,7 +5,7 @@
 <table>
 	<thead>
 		<tr>
-			<?= $function_order_link('type', 'Type') ?>
+			<th>Type</th>
 			<?= $function_order_link('filename', 'Name') ?>
 			<?= $function_order_link('size', 'Size') ?>
 			<?= $function_order_link('owner', 'Owner') ?>
@@ -18,7 +18,7 @@
 	<tbody>
 <?php if(empty($paths)): ?>
 		<tr>
-			<td colspan="6">This directory is empty.</td>
+			<td colspan="8">This directory is empty.</td>
 		</tr>
 <?php endif ?>
 <?php
