@@ -45,9 +45,6 @@ display_startup_errors = 1
 max_execution_time = 30
 post_max_size = {$ini['post_max_size']}
 upload_max_filesize = {$ini['upload_max_filesize']}
-xdebug.var_display_max_depth = -1
-xdebug.var_display_max_children = -1
-xdebug.var_display_max_data = -1
 
 [server]
 ENVIRONMENT = development
