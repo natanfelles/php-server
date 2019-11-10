@@ -132,5 +132,6 @@ echo $function_color('PHP Binary:') . " {$php}\n";
 echo $function_color('Document Root:') . " {$root}\n";
 echo $function_color('Web Address:') . " http://{$host}:{$port}\n";
 echo $function_color('Date:') . ' ' . date('r') . "\n\n";
-
+$root = strtr($root,[' ' => '\ ']);
+$router = strtr($router,[' ' => '\ ']);
 passthru("{$php}{$ini} -S {$host}:{$port} -t {$root} {$router}");
