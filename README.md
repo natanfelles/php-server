@@ -119,12 +119,6 @@ Or, also with a different version of PHP than the default:
 php-server --php php7.4 --port 8081
 ```
 
-Or, custom domain on port 80:
-
-```sh
-sudo php-server --host domain.tld --port 80
-```
-
 Right. You get the idea. If you want to run on a different host you can add the host to the [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)) of your operating system.
 
 ## Contribute
