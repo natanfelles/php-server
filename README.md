@@ -17,7 +17,7 @@ Fine tuning on the PHP Built-in web server
 Open your terminal and run:
 
 ```sh
-composer global require natanfelles/php-server:dev-master
+composer global require natanfelles/php-server
 ```
 
 Add the composer bin path to your *.bashrc*:
