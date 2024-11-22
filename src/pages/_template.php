@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title><?= $title ?></title>
+    <title><?= htmlentities($title) ?></title>
     <link rel="shortcut icon" href="data:image/png;base64,<?= base64_encode(file_get_contents(__DIR__ . '/favicon.png')) ?>">
-    <style type="text/css">
+    <style>
         body {
             margin: 20px;
             font-family: "Fira Sans", "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -225,7 +225,7 @@ if (strpos($title, 'Index of ') === 0 || strpos($title, 'File ') === 0) {
 ?>
 <h1><?= $title ?></h1>
 <p>
-    PHP <?= phpversion() ?> Built-in web server -
+    PHP <?= phpversion() ?> built-in web server -
     <a href="/?php-server=phpinfo">info</a> <span class="date"><?= date('r') ?></span>
 </p>
 
