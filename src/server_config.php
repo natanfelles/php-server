@@ -19,7 +19,7 @@ $default_config = [
 	   'max_execution_time'     => 360,
    ],
    'server'          => [
-	   'PHPSERVER_VERSION' => '2.11',
+	   'PHPSERVER_VERSION' => '2.12',
    ],
 ];
 
