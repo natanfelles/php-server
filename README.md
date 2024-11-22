@@ -4,7 +4,7 @@
 [![PHP version](https://img.shields.io/packagist/php-v/natanfelles/php-server.svg?colorB=blueviolet&label=PHP%20version&style=flat)](https://php.net/downloads.php)
 [![Packagist downloads](https://img.shields.io/packagist/dt/natanfelles/php-server.svg?colorB=%23f28d1a&label=Packagist%20downloads&style=flat)](https://packagist.org/packages/natanfelles/php-server)
 
-Fine tuning on the PHP Built-in web server
+Fine-tuning on the PHP built-in web server
 
 ![PHP Built-in web server autoindex](https://i.imgur.com/dE7B2LJ.png)
 

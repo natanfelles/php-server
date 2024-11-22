@@ -1,6 +1,6 @@
 {
     "name": "natanfelles/php-server",
-    "description": "Fine tuning on the PHP Built-in web server.",
+    "description": "Fine-tuning on the PHP built-in web server.",
     "type": "library",
     "keywords": [
         "server",
