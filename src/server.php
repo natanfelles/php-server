@@ -41,6 +41,12 @@ display_startup_errors = 1
 max_execution_time = 30
 post_max_size = {$ini['post_max_size']}
 upload_max_filesize = {$ini['upload_max_filesize']}
+;opcache.preload = preload.php
+
+xdebug.mode=develop
+xdebug.var_display_max_depth = 10
+xdebug.var_display_max_children = 256
+xdebug.var_display_max_data = 1024
 
 [server]
 ENVIRONMENT = development
