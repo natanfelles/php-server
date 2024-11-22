@@ -26,6 +26,12 @@ Add the composer bin path to your *.bashrc*:
 echo 'export PATH="$PATH:$HOME/.config/composer/vendor/bin"' >> ~/.bashrc
 ```
 
+Run:
+
+```sh
+source ~/.bashrc
+```
+
 ### Manual
 
 Download and extract the *php-server* project folder.
@@ -34,6 +40,12 @@ Add the php-server alias to your *.bashrc*:
 
 ```sh
 echo 'alias php-server="~/php-server/bin/php-server"' >> ~/.bashrc
+```
+
+Run:
+
+```sh
+source ~/.bashrc
 ```
 
 ## Config
@@ -59,9 +71,6 @@ display_startup_errors = 1
 max_execution_time = 360
 post_max_size = 200M
 upload_max_filesize = 200M
-; Array of runtime extensions:
-extension[] = mysqli
-extension[] = zip
 
 [server]
 ENVIRONMENT = development
@@ -116,7 +125,7 @@ php-server --port 8081
 Or, also with a different version of PHP than the default:
 
 ```sh
-php-server --php php7.4 --port 8081
+php-server --php php8.4 --port 8081
 ```
 
 Right. You get the idea. If you want to run on a different host you can add the host to the [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)) of your operating system.
