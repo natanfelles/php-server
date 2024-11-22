@@ -130,11 +130,11 @@
 		}
 		.file-code .lines span {
 			display: block;
-			line-height: 1.595rem;
 		}
 		.file-code .code {
 			width: 200px;
 			padding-left: 5px;
+			font-family: "Fira Mono", "Source Code Pro", monospace;
 		}
 		.file-code .code span {
 			white-space: pre;
