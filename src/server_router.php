@@ -12,7 +12,7 @@
 require __DIR__ . '/functions.php';
 
 /**
- * @var array Server config
+ * @var array $config Server config
  */
 $config = require __DIR__ . '/server_config.php';
 
