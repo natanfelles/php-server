@@ -65,7 +65,7 @@ EOD;
 $config = require __DIR__ . '/server_config.php';
 
 if (in_array('-h', $argv) || in_array('--help', $argv)) {
-    echo "Fine tuning on the PHP Built-in web server\n";
+    echo "Fine-tuning on the PHP built-in web server.\n";
     echo "Created by Natan Felles <natanfelles@gmail.com>\n";
     echo "Checking for the latest release...";
 
@@ -87,11 +87,11 @@ if (in_array('-h', $argv) || in_array('--help', $argv)) {
 
         if ($version == $config['server']['PHPSERVER_VERSION']) {
             echo "The latest php-server version ({$version}) is running.\n";
-        } elseif ($version < $config['server']['PHPSERVER_VERSION']) {
-            echo "A new release is available. Version {$version}\n";
+        } elseif ($version > $config['server']['PHPSERVER_VERSION']) {
+            echo "A new release is available: Version {$version}.\n";
         }
     } else {
-        echo "The current php-server version is {$config['server']['PHPSERVER_VERSION']}\n";
+        echo "The current php-server version is {$config['server']['PHPSERVER_VERSION']}.\n";
     }
 
     echo "Check the repository at https://github.com/natanfelles/php-server\n";
