@@ -1,9 +1,11 @@
 <?php
 $contents = file_get_contents($absolute_path);
 if (substr($absolute_path, -3) === 'php') {
-	$contents = highlight_string($contents, true);
-	$contents = strtr($contents, [PHP_EOL => '', '&nbsp;' => ' ']);
-	$contents = str_replace(['<br>', '<br />'],"\n",$contents);
+    $contents = highlight_string($contents, true);
+    if (PHP_VERSION < '8.3') {
+        $contents = strtr($contents, [PHP_EOL => '', '&nbsp;' => ' ']);
+		$contents = str_replace(['<br>', '<br />'],"\n",$contents);
+	}
 } else {
 	$contents =  '<pre>' . htmlentities($contents) . '</pre>';
 }
