@@ -79,7 +79,7 @@
         }
 
         tr:hover {
-            background: #f5f5f5;
+            background: #ddd;
         }
 
         td, th {
